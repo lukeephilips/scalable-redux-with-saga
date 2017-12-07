@@ -11,21 +11,16 @@ export function fetchTopicsFromServer() {
 }
 
 function* fetchTopics() {
-
   try {
     const topics = yield call(fetchTopicsFromServer);
-    console.log("request from server");
     yield put(requestTopicsSucceeded(topics));
   } catch (e) {
-    console.log("request from server failed");
-
     yield put(requestTopicsFailed(e.message));
   }
 }
 
 export function* fetchTopicsSaga() {
-  console.log("first saga");
-  yield*  takeLatest(REQUEST_TOPICS, fetchTopics);
+  yield* takeLatest(REQUEST_TOPICS, fetchTopics);
 }
 
 // All sagas to be loaded
