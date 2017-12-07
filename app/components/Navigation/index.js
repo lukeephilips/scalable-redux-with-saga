@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import styles from './styles.css';
 
 function Navigation({ topics }) {
-  console.log("topics", topics);
   return (
     <div className={styles.navigation}>
       We have {topics.length} topics in the nav component
