@@ -6,6 +6,7 @@
 
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router';
 
 import styles from './styles.css';
 
@@ -22,7 +23,7 @@ function AppBar({ toggleDrawer }) {
         Sum shit
       </div>
       <div className={styles.linkContainer}>
-        Log In
+        <Link to="/login">login</Link>
       </div>
     </div>
   );
