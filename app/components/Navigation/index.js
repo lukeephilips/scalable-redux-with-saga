@@ -15,7 +15,7 @@ import Drawer from './../Drawer';
 function Navigation({ topics, selectTopic, toggleDrawer, isDrawerOpen, email }) {
   return (
     <div className={styles.navigation}>
-      <AppBar toggleDrawer={toggleDrawer} email={email}/>
+      <AppBar toggleDrawer={toggleDrawer} email={email} />
       <Drawer
         items={topics}
         selectItem={selectTopic}
@@ -37,7 +37,7 @@ Navigation.propTypes = {
   selectTopic: PropTypes.func.isRequired,
   toggleDrawer: PropTypes.func.isRequired,
   isDrawerOpen: PropTypes.bool.isRequired,
-  email: PropTypes.string
+  email: PropTypes.string,
 };
 
 export default Navigation;

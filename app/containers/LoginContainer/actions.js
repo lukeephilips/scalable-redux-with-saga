@@ -18,6 +18,6 @@ export function login(email) {
 
 export function goBack() {
   return {
-    type: GO_BACK
+    type: GO_BACK,
   };
 }

@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import classNames from 'classnames';
+import TextInput from './../TextInput';
 
 import styles from './styles.css';
 
@@ -21,17 +21,13 @@ class LinkForm extends React.Component { // eslint-disable-line react/prefer-sta
           >
             Login with your email
           </div>
-          <input
-            className={classNames(styles.input, { [styles.inputError]: this.state.errorText })}
-            placeholder="URL"
-            ref={(f) => { this.emailField = f; }}
-            type="text"
+          <TextInput
+            placeholder={"URL"}
+            className={styles.input}
           />
-          <input
-            className={classNames(styles.input, { [styles.inputError]: this.state.errorText })}
-            placeholder="description"
-            ref={(f) => { this.description = f; }}
-            type="text"
+          <TextInput
+            placeholder={"description"}
+            className={styles.input}
           />
           <div
             className={styles.actionContainer}
@@ -54,5 +50,9 @@ class LinkForm extends React.Component { // eslint-disable-line react/prefer-sta
     );
   }
 }
+
+LinkForm.propTypes = {
+  goBack: React.PropTypes.func.isRequired,
+};
 
 export default LinkForm;

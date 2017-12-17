@@ -24,8 +24,8 @@ const mapStateToProps = selectLoginContainer();
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: (email) =>dispatch(login(email)),
-    goBack: () =>dispatch(goBack()),
+    login: (email) => dispatch(login(email)),
+    goBack: () => dispatch(goBack()),
 
   };
 }

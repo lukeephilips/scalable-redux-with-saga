@@ -11,7 +11,7 @@ import { Link } from 'react-router';
 import styles from './styles.css';
 
 function AppBar({ toggleDrawer, email }) {
-  const loginLink = email || <Link to="/login">login</Link>
+  const loginLink = email || <Link to="/login">login</Link>;
   return (
     <div className={styles.appBar}>
       <div

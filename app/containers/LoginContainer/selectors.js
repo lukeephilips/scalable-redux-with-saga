@@ -22,5 +22,5 @@ const selectLoginContainer = () => createSelector(
 export default selectLoginContainer;
 export {
   selectLoginContainerDomain,
-  selectLoginContainer
+  selectLoginContainer,
 };
