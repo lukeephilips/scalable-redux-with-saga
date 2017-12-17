@@ -12,21 +12,21 @@ import AppBar from './../AppBar';
 import Drawer from './../Drawer';
 
 
-function Navigation({ topics, selectTopic, toggleDrawer, isDrawerOpen }) {
+function Navigation({ topics, selectTopic, toggleDrawer, isDrawerOpen, email }) {
   return (
     <div className={styles.navigation}>
-      <AppBar toggleDrawer={toggleDrawer} />
+      <AppBar toggleDrawer={toggleDrawer} email={email}/>
       <Drawer
         items={topics}
         selectItem={selectTopic}
         itemLabel="name"
         itemKey="name"
         isDrawerOpen={isDrawerOpen}
-
       />
     </div>
   );
 }
+
 Navigation.propTypes = {
   topics: PropTypes.arrayOf(
     PropTypes.shape({
@@ -37,6 +37,7 @@ Navigation.propTypes = {
   selectTopic: PropTypes.func.isRequired,
   toggleDrawer: PropTypes.func.isRequired,
   isDrawerOpen: PropTypes.bool.isRequired,
+  email: PropTypes.string
 };
 
 export default Navigation;

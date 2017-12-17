@@ -8,7 +8,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import selectLoginContainer from './selectors';
 import Login from './../../components/Login';
-import { login } from './actions';
+import { login, goBack } from './actions';
 
 export class LoginContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -25,6 +25,8 @@ const mapStateToProps = selectLoginContainer();
 function mapDispatchToProps(dispatch) {
   return {
     login: (email) =>dispatch(login(email)),
+    goBack: () =>dispatch(goBack()),
+
   };
 }
 

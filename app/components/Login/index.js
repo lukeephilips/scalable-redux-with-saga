@@ -55,6 +55,7 @@ class Login extends React.Component { // eslint-disable-line react/prefer-statel
         >
           <div
             className={styles.button}
+            onClick={this.props.goBack}
           >
           cancel
           </div>
@@ -62,7 +63,7 @@ class Login extends React.Component { // eslint-disable-line react/prefer-statel
             className={styles.button}
             onClick={this.login}
           >
-          submit
+          log in
           </div>
         </div>
       </div>
@@ -71,6 +72,8 @@ class Login extends React.Component { // eslint-disable-line react/prefer-statel
 }
 Login.propTypes = {
   login: React.PropTypes.func.isRequired,
+  goBack: React.PropTypes.func.isRequired,
+
 }
 
 export default Login;

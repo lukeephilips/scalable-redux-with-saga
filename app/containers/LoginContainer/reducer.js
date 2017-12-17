@@ -14,7 +14,7 @@ const initialState = fromJS({});
 function loginContainerReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN:
-      return state.set('email': action.email);
+      return state.set('email', action.email);
     default:
       return state;
   }
