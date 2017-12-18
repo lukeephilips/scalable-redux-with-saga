@@ -27,14 +27,6 @@ class Login extends React.Component { // eslint-disable-line react/prefer-statel
   }
 
   render() {
-    const fieldError = this.state.errorText ? (
-      <div
-        className={styles.errorMessage}
-      >
-        {this.state.errorText}
-      </div>
-    ) : null;
-
     return (
       <div className={styles.login}>
         <div

@@ -12,16 +12,16 @@ import styles from './styles.css';
 class TextInput extends React.Component { // eslint-disable-line react/prefer-stateless-function
   value() {
     return this.field.value;
-  };
+  }
 
   render() {
     const { errorText } = this.props;
     const fieldError = errorText ? (
       <div
         className={styles.errorMessage}
-        >
-          {errorText}
-        </div>
+      >
+        {errorText}
+      </div>
       ) : null;
     return (
       <div className={styles.textInput}>
@@ -38,9 +38,9 @@ class TextInput extends React.Component { // eslint-disable-line react/prefer-st
 }
 
 TextInput.propTypes = {
-    errorText: React.PropTypes.string,
-    placeholder: React.PropTypes.string,
-    className: React.PropTypes.string,
+  errorText: React.PropTypes.string,
+  placeholder: React.PropTypes.string,
+  className: React.PropTypes.string,
 };
 
 export default TextInput;

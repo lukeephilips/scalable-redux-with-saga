@@ -26,7 +26,7 @@ function LinkList({ links, topicName, children }) {
 
 LinkList.propTypes = {
   topicName: React.PropTypes.string.isRequired,
-  children: React.PropTypes.element.isRequired,
+  children: React.PropTypes.element,
   links: React.PropTypes.arrayOf(React.PropTypes.shape({
     description: React.PropTypes.string.isRequired,
     url: React.PropTypes.string.isRequired,
