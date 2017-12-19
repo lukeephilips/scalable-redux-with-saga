@@ -9,6 +9,7 @@ import { createLink } from './../../api';
 
 // Individual exports for testing
 function* addLink(action) {
+  console.log("call back saga");
   try {
     const serverLink = yield call(createLink, action.link);
     yield put(addLinkSuccess(serverLink));
@@ -19,11 +20,12 @@ function* addLink(action) {
 }
 
 export function* addLinkSaga() {
+  console.log("take latest");
   yield* takeLatest(ADD_LINK, addLink);
 }
 
 function* handleGoBack() {
-  v
+  yield put(goBack());
 }
 
 export function* goBackSaga() {

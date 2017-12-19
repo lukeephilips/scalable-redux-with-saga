@@ -33,9 +33,9 @@ class LinkForm extends React.Component { // eslint-disable-line react/prefer-sta
       descriptionError,
     });
 
-    if (urlError || descriptionError) {
-      return;
-    }
+    // if (urlError || descriptionError) {
+    //   return;
+    // }
 
     const link = {
       url,
