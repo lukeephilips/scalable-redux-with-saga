@@ -10,14 +10,13 @@ import IconButton from './../IconButton';
 
 import styles from './styles.css';
 
-function Link({ link, upVote }) {
+function Link({ link, upVote, email }) {
   const handleVote = (up) => {
     let inc = 1;
-
     if (!up) {
       inc = -1;
     }
-    upVote(link.id, 'test', inc);
+    upVote(link.id, email, inc);
   }
   return (
     <div className={styles.link}>
@@ -50,6 +49,7 @@ function Link({ link, upVote }) {
         className={styles.detailsContainer}
       >
         <div>
+          <p>{email}</p>
           <a
             href={link.url}
             className={styles.linkAnchor}
@@ -68,6 +68,7 @@ function Link({ link, upVote }) {
 }
 
 Link.propTypes = {
+  email: React.PropTypes.string,
   upVote: React.PropTypes.func.isRequired,
   link: React.PropTypes.shape({
     description: React.PropTypes.string.isRequired,

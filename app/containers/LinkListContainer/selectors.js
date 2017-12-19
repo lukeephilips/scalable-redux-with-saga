@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import selectNavigationContainer from './../NavigationContainer/selectors';
+import { selectLoginContainer } from './../LoginContainer/selectors';
 
 /**
  * Direct selector to the linkListContainer state domain
@@ -30,8 +31,10 @@ const selectTopic = () => createSelector(
 const selectLinkListContainer = () => createSelector(
   selectLinkListContainerDomain(),
   selectTopic(),
-  (substate, topic) =>
-    Object.assign(substate.toJS(), { topicName: topic.name })
+  selectLoginContainer(),
+  (substate, topic, loginSubstate) => {
+    return Object.assign(substate.toJS(), { topicName: topic.name, email: loginSubstate.email } )
+  }
 );
 
 export default selectLinkListContainer;

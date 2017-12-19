@@ -31,6 +31,7 @@ export class LinkListContainer extends React.Component { // eslint-disable-line 
 LinkListContainer.propTypes = {
   topicName: React.PropTypes.string.isRequired,
   requestLinks: React.PropTypes.func.isRequired,
+  email: React.PropTypes.string,
 };
 
 const mapStateToProps = selectLinkListContainer();
