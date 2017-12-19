@@ -8,7 +8,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import selectLinkListContainer from './selectors';
 import LinkList from './../../components/LinkList';
-import { requestLinks, startAdd } from './actions';
+import { requestLinks, startAdd, upVote } from './actions';
 
 export class LinkListContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
@@ -39,6 +39,7 @@ function mapDispatchToProps(dispatch) {
   return {
     requestLinks: (topicName) => dispatch(requestLinks(topicName)),
     startAdd: (topicName) => dispatch(startAdd(topicName)),
+    upVote: (id, email, increment) => dispatch(upVote(id, email, increment)),
   };
 }
 

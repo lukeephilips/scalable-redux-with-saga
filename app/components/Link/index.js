@@ -5,11 +5,20 @@
 */
 
 import React from 'react';
+import IconButton from './../IconButton';
 
 
 import styles from './styles.css';
 
-function Link({ link }) {
+function Link({ link, upVote }) {
+  const handleVote = (up) => {
+    let inc = 1;
+
+    if (!up) {
+      inc = -1;
+    }
+    upVote(link.id, 'test', inc);
+  }
   return (
     <div className={styles.link}>
       <div
@@ -20,7 +29,22 @@ function Link({ link }) {
         >
           {link.voteCount}
         </div>
-
+        <div
+          className={styles.voteArrows}
+        >
+          <IconButton
+            handleClick={() => handleVote(true)}
+            icon="arrow-up"
+            buttonClass={''}
+            iconClass={styles.upVote}
+          />
+          <IconButton
+            handleClick={() => handleVote(false)}
+            icon="arrow-down"
+            buttonClass={''}
+            iconClass={styles.downVote}
+          />
+        </div>
       </div>
       <div
         className={styles.detailsContainer}
@@ -44,6 +68,7 @@ function Link({ link }) {
 }
 
 Link.propTypes = {
+  upVote: React.PropTypes.func.isRequired,
   link: React.PropTypes.shape({
     description: React.PropTypes.string.isRequired,
     url: React.PropTypes.string.isRequired,

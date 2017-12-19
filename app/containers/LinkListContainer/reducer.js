@@ -20,9 +20,8 @@ const initialState = fromJS({
 });
 
 function addLink(state, link) {
-  console.log("reducer callback");
   let links = state.get('links');
-
+  
   if(!links.find((l) => l.id === link.id)){
     links.push(link);
     state.set('links', links);
@@ -33,7 +32,6 @@ function addLink(state, link) {
 function linkListContainerReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_LINK_SUCCESS:
-      console.log("reducer");
       return addLink(state, action.link);
     case ADD_LINK_FAILED:
       return state;

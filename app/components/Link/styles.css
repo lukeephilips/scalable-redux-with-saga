@@ -8,12 +8,15 @@
 }
 .votingContainer {
   padding: 15px;
+  display: flex;
 }
 .votingCount {
   font-size: 20px;
   text-align: center;
   padding-bottom: 5px;
   padding-top: 5px;
+  padding-right: 8px;
+
 }
 .detailsContainer {
   display: flex;
@@ -27,6 +30,12 @@
 }
 .votingIcon {
   font-size: 40px;
+}
+.upVote {
+  color: green;
+}
+.downVote {
+  color: maroon;
 }
 .linkAnchor {
   text-decoration: none;

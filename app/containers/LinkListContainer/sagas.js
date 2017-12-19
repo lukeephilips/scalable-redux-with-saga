@@ -2,8 +2,13 @@
 import { call, put } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
 import { push } from 'react-router-redux';
+import { incrementVote } from './../../api';
 
-import { REQUEST_LINKS, START_ADD } from './constants';
+import {
+  REQUEST_LINKS,
+  START_ADD,
+  UP_VOTE,
+} from './constants';
 import { requestLinksSucceeded, requestLinksFailed } from './actions';
 
 function fetchLinksFromServer(topicName) {
@@ -28,6 +33,14 @@ export function* startAddSaga() {
   yield* takeLatest(START_ADD, startAdd);
 }
 
+function* upVote(action) {
+  const serverLink = yield call(incrementVote, {id: action.id, email: action.email, increment: action.increment});
+}
+
+export function* upVoteSaga() {
+  yield* takeLatest(UP_VOTE, upVote);
+}
+
 export function* defaultSaga() {
   yield* takeLatest(REQUEST_LINKS, fetchLinks);
 }
@@ -36,4 +49,5 @@ export function* defaultSaga() {
 export default [
   defaultSaga,
   startAddSaga,
+  upVoteSaga,
 ];

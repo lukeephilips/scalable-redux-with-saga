@@ -9,11 +9,12 @@ import styles from './styles.css';
 import Link from '../Link';
 import IconButton from './../IconButton';
 
-function LinkList({ links, topicName, children, startAdd }) {
+function LinkList({ links, topicName, children, startAdd, upVote }) {
   const linkNodes = links.map((link) => (
     <Link
       key={link.id}
       link={link}
+      upVote={upVote}
     />
   ));
   const handlestartAdd = () => {

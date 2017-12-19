@@ -19,7 +19,6 @@ export function addLink(link) {
 }
 
 export function addLinkSuccess(link) {
-  console.log("action")
   return {
     type: ADD_LINK_SUCCESS,
     link,
