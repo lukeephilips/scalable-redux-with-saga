@@ -10,7 +10,40 @@ import TextInput from './../TextInput';
 import styles from './styles.css';
 
 class LinkForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  state = {};
+  state = {
+    urlError: '',
+    descriptionError: '',
+  };
+
+  onAdd = () => {
+    const url = this.url.value();
+    const description = this.description.value();
+    let urlError = null;
+    let descriptionError = null;
+
+    if (!url.match(/[-a-zA-Z0-9@:%._\+~#+]{2,256}\.[a-z]{2,6}\b([-a-zA-z0-9@:%_\+.~#?&//=]*)/)) {
+      urlError = 'Please enter a valid URL';
+    }
+    if (!description) {
+      descriptionError = 'Please enter a valid description';
+    }
+
+    this.setState({
+      urlError,
+      descriptionError,
+    });
+
+    if (urlError || descriptionError) {
+      return;
+    }
+
+    const link = {
+      url,
+      description,
+      topicName: this.props.topicName,
+    };
+    this.props.addLink(link);
+  };
 
   render() {
     return (
@@ -19,15 +52,19 @@ class LinkForm extends React.Component { // eslint-disable-line react/prefer-sta
           <div
             className={styles.heading}
           >
-            Login with your email
+            Add Link
           </div>
           <TextInput
             placeholder={"URL"}
             className={styles.input}
+            errorText={this.state.urlError}
+            ref={(f) => (this.url = f)}
           />
           <TextInput
             placeholder={"description"}
             className={styles.input}
+            errorText={this.state.descriptionError}
+            ref={(f) => (this.description = f)}
           />
           <div
             className={styles.actionContainer}
@@ -40,9 +77,9 @@ class LinkForm extends React.Component { // eslint-disable-line react/prefer-sta
             </div>
             <div
               className={styles.button}
-              onClick={this.login}
+              onClick={this.onAdd}
             >
-            log in
+            Add Link
             </div>
           </div>
         </div>
@@ -53,6 +90,8 @@ class LinkForm extends React.Component { // eslint-disable-line react/prefer-sta
 
 LinkForm.propTypes = {
   goBack: React.PropTypes.func.isRequired,
+  addLink: React.PropTypes.func.isRequired,
+  topicName: React.PropTypes.string.isRequired,
 };
 
 export default LinkForm;

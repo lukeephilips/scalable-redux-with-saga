@@ -1,7 +1,9 @@
 // import { take, call, put, select } from 'redux-saga/effects';
 import { call, put } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
-import { REQUEST_LINKS } from './constants';
+import { push } from 'react-router-redux';
+
+import { REQUEST_LINKS, START_ADD } from './constants';
 import { requestLinksSucceeded, requestLinksFailed } from './actions';
 
 function fetchLinksFromServer(topicName) {
@@ -18,6 +20,14 @@ export function* fetchLinks(action) {
   }
 }
 
+function* startAdd(action) {
+  yield put(push(`/topics/${action.topicName}/add`));
+}
+
+export function* startAddSaga() {
+  yield* takeLatest(START_ADD, startAdd);
+}
+
 export function* defaultSaga() {
   yield* takeLatest(REQUEST_LINKS, fetchLinks);
 }
@@ -25,4 +35,5 @@ export function* defaultSaga() {
 // All sagas to be loaded
 export default [
   defaultSaga,
+  startAddSaga,
 ];
