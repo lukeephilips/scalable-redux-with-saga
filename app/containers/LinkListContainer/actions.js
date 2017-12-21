@@ -10,15 +10,24 @@ import {
   REQUEST_LINKS_FAILED,
   START_ADD,
   UP_VOTE,
+  UP_VOTE_SUCCESS,
+
 } from './constants';
 
 export function upVote(id, email, increment) {
-  console.log("upvote action: ", id, email, increment);
   return {
     type: UP_VOTE,
     id,
     email,
     increment,
+  };
+}
+
+export function upVoteSuccess(link) {
+  console.log("link: ", link);
+  return {
+    type: UP_VOTE_SUCCESS,
+    link,
   };
 }
 

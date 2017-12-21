@@ -9,4 +9,4 @@
  export const REQUEST_LINKS_FAILED = 'app/LinkListContainer/REQUEST_LINKS_FAILED';
  export const START_ADD = 'app/LinkListContainer/START_ADD';
  export const UP_VOTE = 'app/LinkListContainer/UP_VOTE';
- export const DOWN_VOTE = 'app/LinkListContainer/DOWN_VOTE';
+ export const UP_VOTE_SUCCESS = 'app/LinkListContainer/UP_VOTE_SUCCESS';

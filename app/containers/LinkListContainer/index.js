@@ -16,6 +16,7 @@ export class LinkListContainer extends React.Component { // eslint-disable-line 
   }
 
   componentWillReceiveProps(newProps) {
+    console.log("ding");
     if (newProps.topicName !== this.props.topicName) {
       this.props.requestLinks(newProps.topicName);
     }
@@ -34,7 +35,9 @@ LinkListContainer.propTypes = {
   email: React.PropTypes.string,
 };
 
-const mapStateToProps = selectLinkListContainer();
+const mapStateToProps = selectLinkListContainer(
+  {links: this.links}
+);
 
 function mapDispatchToProps(dispatch) {
   return {

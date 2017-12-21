@@ -9,7 +9,7 @@ import {
   START_ADD,
   UP_VOTE,
 } from './constants';
-import { requestLinksSucceeded, requestLinksFailed } from './actions';
+import { requestLinksSucceeded, requestLinksFailed, upVoteSuccess } from './actions';
 
 function fetchLinksFromServer(topicName) {
   return fetch(`http://localhost:3000/api/topics/${topicName}/links`)
@@ -34,7 +34,13 @@ export function* startAddSaga() {
 }
 
 function* upVote(action) {
-  const serverLink = yield call(incrementVote, {id: action.id, email: action.email, increment: action.increment});
+  try {
+    const serverLink = yield call(incrementVote, {id: action.id, email: action.email, increment: action.increment});
+    yield put(upVoteSuccess(serverLink));
+  } catch (e) {
+    // yield put(upVoteFailed(action.link, e.message));
+  }
+
 }
 
 export function* upVoteSaga() {
