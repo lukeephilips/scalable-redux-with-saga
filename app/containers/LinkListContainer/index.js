@@ -16,7 +16,6 @@ export class LinkListContainer extends React.Component { // eslint-disable-line 
   }
 
   componentWillReceiveProps(newProps) {
-    console.log("ding");
     if (newProps.topicName !== this.props.topicName) {
       this.props.requestLinks(newProps.topicName);
     }

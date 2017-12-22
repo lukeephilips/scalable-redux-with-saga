@@ -10,8 +10,11 @@ const selectLinkListContainerDomain = () => state => state.get('linkListContaine
 /**
  * Other specific selectors
  */
-const selectRouteTopic = () => (state, props) =>
-  props.params.topicName;
+const selectRouteTopic = () => (state, props) => {
+  if (props) {
+    return props.params.topicName;
+  }
+}
 
 const selectTopic = () => createSelector(
   selectNavigationContainer(),

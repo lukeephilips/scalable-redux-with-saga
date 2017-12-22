@@ -1,15 +1,17 @@
 // import { take, call, put, select } from 'redux-saga/effects';
-import { call, put } from 'redux-saga/effects';
+import { call, put, select } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
 import { push } from 'react-router-redux';
-import { incrementVote } from './../../api';
 
+import { incrementVote } from './../../api';
 import {
   REQUEST_LINKS,
   START_ADD,
   UP_VOTE,
 } from './constants';
 import { requestLinksSucceeded, requestLinksFailed, upVoteSuccess } from './actions';
+import selectLinkListContainer from './selectors';
+
 
 function fetchLinksFromServer(topicName) {
   return fetch(`http://localhost:3000/api/topics/${topicName}/links`)
@@ -26,6 +28,12 @@ export function* fetchLinks(action) {
 }
 
 function* startAdd(action) {
+  const state = yield select(selectLinkListContainer());
+  console.log("DING", state);
+  if (!state.email) {
+    yield put(push('login'));
+    return;
+  }
   yield put(push(`/topics/${action.topicName}/add`));
 }
 
@@ -34,11 +42,19 @@ export function* startAddSaga() {
 }
 
 function* upVote(action) {
+  const state = yield select(selectLinkListContainer());
   try {
-    const serverLink = yield call(incrementVote, {id: action.id, email: action.email, increment: action.increment});
+    if (!state.email) {
+      yield put(push('login'));
+      return;
+    }
+
+    const serverLink = yield call(incrementVote,
+      {id: action.id, email: state.email, increment: action.increment}
+    );
     yield put(upVoteSuccess(serverLink));
   } catch (e) {
-    // yield put(upVoteFailed(action.link, e.message));
+    yield put(upVoteFailed(action.link, e.message));
   }
 
 }
